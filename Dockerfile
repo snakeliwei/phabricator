@@ -1,6 +1,6 @@
 FROM redpointgames/phabricator
 
-RUN rm -rf /src \
+RUN rm -rf /src/phabricator \
     && mkdir -p /srv/phabricator \
     && cd /srv/phabricator \
     && git clone https://www.github.com/phacility/libphutil.git /srv/phabricator/libphutil \
