@@ -1,8 +1,12 @@
-FROM hachque/systemd-none
-
+FROM RedpointGames/phabricator
+RUN cd /src/phabricator/phabricator \
+    && git pull \
+    && cd /srv/phabricator/libphutil \
+    && git pull \
+    && /srv/phabricator/arcanist \
+    && git pull \
+    && /srv/phabricator/PHPExcel \
+    && git pull
+    
 EXPOSE 80 443 22 24
-COPY baseline /baseline
-RUN /baseline/setup.sh
-COPY preflight /preflight
-RUN /preflight/setup.sh
 CMD ["/bin/bash", "/app/init.sh"]
