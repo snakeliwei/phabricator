@@ -1,5 +1,7 @@
 FROM redpointgames/phabricator
-RUN mkdir -p /srv/phabricator \
+
+RUN rm -rf /src \
+    && mkdir -p /srv/phabricator \
     && cd /srv/phabricator \
     && git clone https://www.github.com/phacility/libphutil.git /srv/phabricator/libphutil \
     && git clone https://www.github.com/phacility/arcanist.git /srv/phabricator/arcanist \
