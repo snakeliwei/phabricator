@@ -1,4 +1,4 @@
-FROM RedpointGames/phabricator
+FROM redpointgames/phabricator
 RUN cd /src/phabricator/phabricator \
     && git pull \
     && cd /srv/phabricator/libphutil \
