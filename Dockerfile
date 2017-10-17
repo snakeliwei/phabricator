@@ -1,12 +1,9 @@
 FROM redpointgames/phabricator
-RUN cd /src/phabricator/phabricator \
-    && git pull \
-    && cd /srv/phabricator/libphutil \
-    && git pull \
-    && cd /srv/phabricator/arcanist \
-    && git pull \
-    && cd /srv/phabricator/PHPExcel \
-    && git pull
-    
-EXPOSE 80 443 22 24
-CMD ["/bin/bash", "/app/init.sh"]
+RUN mkdir -p /srv/phabricator \
+    && cd /srv/phabricator \
+    && git clone https://www.github.com/phacility/libphutil.git /srv/phabricator/libphutil \
+    && git clone https://www.github.com/phacility/arcanist.git /srv/phabricator/arcanist \
+    && git clone https://www.github.com/phacility/phabricator.git /srv/phabricator/phabricator \
+    && git clone https://www.github.com/PHPOffice/PHPExcel.git /srv/phabricator/PHPExcel \
+    && chown -R PHABRICATOR:wwwgrp-phabricator /srv/phabricator 
+
